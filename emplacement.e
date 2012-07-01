@@ -1,28 +1,27 @@
 note
-	description: "Summary description for {EMPLACEMENT}."
+	description: "Abstraction d'un emplacement pour une pièce (ex : pièce d'échiquier)"
 	author: ""
 	date: "$Date$"
 	revision: "$Revision$"
 
 deferred class
-	EMPLACEMENT
+	LOCATION[G -> PIECE]
 
 feature
-	poser(p : PIECE)
+	put(p : G)
+	-- ajouter une piece
 	deferred
 	end
 
-	retirer(p : PIECE)
+	puted_piece : G
+
+	empty
+	-- vider l'emplacement (retirer la piece s'il y en a une)
 	deferred
 	end
 
-	piece_posee : PIECE
-
-	vider
-	deferred
-	end
-
-	est_posable(p : PIECE) : BOOLEAN
+	is_putable(p : G) : BOOLEAN
+	-- Peut-on mettre cette pièce sur cet emplacement ?
 	deferred
 	end
 

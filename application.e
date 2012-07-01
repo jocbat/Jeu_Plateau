@@ -22,16 +22,14 @@ feature {NONE} -- Initialization
       			--mon_perso : PERSONNAGE
       			--motif : MOTIF[DEPLACEABLE]
       		--	test : TEST
-      			test2 : TEST2
-      			test2_2 : TEST2
-      			test3 : TEST3
+
       			liste_reels : LINKED_LIST[REAL]
-      			emplacement : EMPLACEMENT_MOTIF
       			o1 : ANY
       			o2 : ANY
       			point : POINT
       			centre : POINT
-
+				piece : PIECE
+				loc : LOCATION[PIECE]
 
 
 		do
@@ -83,7 +81,7 @@ feature {NONE} -- Initialization
 			--o1 := test
 			--o2 := test2
 			--print(o1.same_type (o2))
- 
+
 			--print(o1.is_equal (o2))
 			--print("valeur x de test : ")
 			--print(test.x)
