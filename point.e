@@ -17,6 +17,9 @@ feature
 	do
 		abscisse := abs
 		ordonnee := ord
+	ensure
+		set_abscisse : abscisse = abs
+		set_ordonnee : ordonnee = ord
 	end
 
 feature
@@ -28,11 +31,11 @@ feature
 	do
 		abscisse := abscisse + v_abs
 		ordonnee := ordonnee + v_ord
-	--ensure
-	--	reverse_translation_abscisse :
-	--		old  abscisse = abscisse - v_abs
-	--	reverse_translation_ordonnee :
-	--		old  ordonnee = ordonnee - v_ord
+	ensure then
+		reverse_translation_abscisse :
+			abscisse = old  abscisse + v_abs
+		reverse_translation_ordonnee :
+			ordonnee = old  ordonnee + v_ord
 	end
 
 	rotation_90(centre : POINT)
@@ -40,10 +43,19 @@ feature
 		v_abs : INTEGER
 		v_ord : INTEGER
 	do
-		v_abs := centre.abscisse - ordonnee
-		v_ord := centre.ordonnee + abscisse
+		v_abs := centre.abscisse + (centre.ordonnee - ordonnee)
+		v_ord := centre.ordonnee - (centre.abscisse - abscisse)
 		abscisse := v_abs
 		ordonnee := v_ord
+	ensure then
+		-- évaluation des distances à l'aide de la distance canonique
+		meme_distance : (old abscisse - centre.abscisse)^2 + (old ordonnee - centre.ordonnee)^2
+		= (abscisse - centre.abscisse)^2 + (ordonnee - centre.ordonnee)^2
+
+		-- réciproque du théorème de Pythagore
+		angle_droit : (old abscisse - centre.abscisse)^2 + (old ordonnee - centre.ordonnee)^2
+		+ (abscisse - centre.abscisse)^2 + (ordonnee - centre.ordonnee)^2
+		= (old abscisse - abscisse)^2 + (old ordonnee - ordonnee)^2
 	end
 
 feature
