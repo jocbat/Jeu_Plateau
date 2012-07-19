@@ -37,6 +37,8 @@ feature -- Test routines
 		end
 
 	test_square_distance_from
+	note
+			testing:  "covers/{POINT}.square_distance_from"
 	local
 		point1 : POINT
 		point2 : POINT
@@ -122,6 +124,8 @@ feature -- Test routines
 	end
 
 	test_center_point_rotation90
+	note
+		testing:  "covers/{POINT}.center_point_rotation90"
 	local
 		p1 : POINT
 		p2 : POINT
