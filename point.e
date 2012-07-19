@@ -84,8 +84,18 @@ feature
 	is_rotation90_of(other : like Current) : BOOLEAN
 	-- Est ce que le point courant est l'image de 'other' par
 	-- une rotation de 90° ?
+	local
+		-- Calcul des coordonnées du centre éventuel de la rotation
+		-- On raisonne sur le référenciel dont l'origine est le point courant
+		x, y : INTEGER
 	do
-			Result := ((other.ordonnee - other.abscisse + ordonnee - abscisse) \\ 2 = 0)
+		-- le centre (x_center, y_center) existe si et seulement si :
+		-- x_center := abscisse + (other.abscisse - abscisse + other.ordonnee - ordonnee) / 2
+		-- y_center := ordonnee + (other.ordonnee - ordonnee + abscisse - other.abscisse) / 2
+		-- sont des entiers
+		x := other.abscisse - abscisse + other.ordonnee - ordonnee
+		y := other.ordonnee - ordonnee + abscisse - other.abscisse
+		Result := (x \\ 2 = 0) and (y \\ 2 = 0)
 	end
 
 	is_rotation180_of(other : like Current) : BOOLEAN
@@ -111,6 +121,7 @@ feature
     	x : INTEGER
     	y : INTEGER
     	center : POINT
+
 	do
 		x_center := abscisse + (other.abscisse - abscisse + other.ordonnee - ordonnee) / 2
 		y_center := ordonnee + (other.ordonnee - ordonnee + abscisse - other.abscisse) / 2
@@ -118,8 +129,12 @@ feature
 		-- on peut tronquer car la précondition est vérifiée x_center est bien un entier
 		y := y_center.truncated_to_integer
 		-- on peut tronquer car la précondition est vérifiée y_center est bien un entier
-		center.make (x, y)
+		create center.make (x, y)
 		Result := center
+	ensure then
+		same_distance : square_distance_from(Result) = other.square_distance_from (Result)
+		angle_of_90 : other.square_distance_from (Result) + Result.square_distance_from (Current) =
+						other.square_distance_from (Current)
 	end
 
 	center_point_rotation180(other : like Current) : POINT
@@ -182,6 +197,14 @@ feature
 		-- en prenant 'point' comme "nouvel origine"
 		abscisse := point.abscisse - (ordonnee - point.ordonnee)
 		ordonnee := point.ordonnee - (abscisse - point.abscisse)
+	end
+
+	square_distance_from(other : like Current) : REAL_64
+	do
+		Result := (other.abscisse - abscisse)^2 + (other.ordonnee - ordonnee)^2
+	ensure then
+		positive : Result >= 0
+		symmetric : Result = other.square_distance_from (Current)
 	end
 
 feature{NONE}
