@@ -107,7 +107,6 @@ feature -- Test routines
 		create antecedent.make (4, 2)
 		assert ("Deux points qui sont images par une rotation de 90°",
 								current_point.is_rotation90_of (antecedent))
-
 	end
 
 	test_is_rotation90_of_wrong_case
@@ -134,9 +133,67 @@ feature -- Test routines
 	do
 		create p1.make (0, 1)
 		create p2.make (1, 0)
-		create origin.make (0, 0)
 		center := p1.center_point_rotation90 (p2)
 	end
+
+	test_is_rotation180_of_true_case
+	note
+		testing:  "covers/{POINT}.is_rotation180_of"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (1, 1)
+		create p2.make (1, -1)
+		assert ("Deux points images par rotation de 180 degrés",
+					p1.is_rotation180_of (p2))
+	end
+
+	test_is_rotation180_of_wrong_case
+	note
+		testing:  "covers/{POINT}.is_rotation180_of"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (1, 1)
+		create p2.make (4, 2)
+		assert ("Deux points images par rotation de 180 degrés",
+					not p1.is_rotation180_of (p2))
+	end
+
+
+	test_is_rotation270_of_true_case
+	note
+		testing:  "covers/{POINT}.is_rotation270_of"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (0, -2)
+		create p2.make (2, 0)
+		assert ("Deux points images par rotation de 180 degrés",
+					p2.is_rotation270_of (p1))
+	end
+
+	test_is_rotation270_of_wrong_case
+	note
+		testing:  "covers/{POINT}.is_rotation270_of"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (1, 1)
+		create p2.make (1, 0)
+		assert ("Deux points images par rotation de 180 degrés",
+					not p2.is_rotation270_of (p1))
+	end
+
+
 
 end
 
