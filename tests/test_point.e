@@ -224,9 +224,11 @@ feature -- Test routines
 		center := p1.center_point_rotation90 (p2)
 	end
 
-
-
-
+	--vector_translation
+	--symetriser_horizontalement
+	--symetriser_verticalement
+	--symetriser_premiere_diagonale
+	--symetriser_deuxieme_diagonale
 
 end
 
