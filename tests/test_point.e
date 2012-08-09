@@ -24,18 +24,6 @@ feature -- Test routines
 			create point.make (12, -5)
 		end
 
-	test_is_equal
-		note
-			testing:  "covers/{POINT}.is_equal"
-		local
-			point : POINT
-			point2 : POINT
-		do
-			create point.make (12, -5)
-			create point2.make (12, -5)
-			assert ("les deux points sont égaux", point.is_equal (point2))
-		end
-
 	test_square_distance_from
 	note
 			testing:  "covers/{POINT}.square_distance_from"
@@ -48,6 +36,41 @@ feature -- Test routines
 		assert ("La distance entre deux points est bien calculée",
 					point1.square_distance_from(point2) = 2)
 	end
+
+	test_is_equal
+	note
+		testing:  "covers/{POINT}.is_equal"
+	local
+		point : POINT
+		point2 : POINT
+	do
+		create point.make (12, -5)
+		create point2.make (12, -5)
+		assert ("les deux points sont égaux", point.is_equal (point2))
+	end
+
+	test_translater
+	note
+		testing:  "covers/{POINT}.translater"
+	local
+		point : POINT
+	do
+		create point.make (12, -5)
+		point.translater (10, -9)
+	end
+
+	test_rotation_90
+	note
+		testing:  "covers/{POINT}.rotation_90"
+	local
+		point : POINT
+		centre : POINT
+	do
+		create point.make (1, 2)
+		create centre.make (0, 0)
+		point.rotation_90 (centre)
+	end
+
 
 	test_is_isometric
 		note
@@ -62,39 +85,22 @@ feature -- Test routines
 		end
 
 	test_is_translation_of
-		note
-			testing:  "covers/{POINT}.is_translation_of"
-		local
-			point : POINT
-			point2 : POINT
-		do
-			create point.make (2, -1)
-			create point2.make (1, 1)
-			assert ("Deux points sont images par une translation", point.is_isometric (point2))
-		end
-
-
-	test_translater
-		note
-			testing:  "covers/{POINT}.translater"
-		local
-			point : POINT
-		do
-			create point.make (12, -5)
-			point.translater (10, -9)
-		end
-
-	test_rotation_90
 	note
-		testing:  "covers/{POINT}.rotation_90"
+		testing:  "covers/{POINT}.is_translation_of"
 	local
 		point : POINT
-		centre : POINT
+		point2 : POINT
 	do
-		create point.make (1, 2)
-		create centre.make (0, 0)
-		point.rotation_90 (centre)
+		create point.make (2, -1)
+		create point2.make (1, 1)
+		assert ("Deux points sont images par une translation", point.is_isometric (point2))
 	end
+
+	test_is_rotation_of
+	do
+		-- TODO !!
+	end
+
 
 	test_is_rotation90_of_true_case
 	note
@@ -120,20 +126,6 @@ feature -- Test routines
 		create antecedent.make (1, 0)
 		assert ("Deux points qui sont images par une rotation de 90°",
 								not current_point.is_rotation90_of (antecedent))
-	end
-
-	test_center_point_rotation90
-	note
-		testing:  "covers/{POINT}.center_point_rotation90"
-	local
-		p1 : POINT
-		p2 : POINT
-		center : POINT
-		origin : POINT
-	do
-		create p1.make (0, 1)
-		create p2.make (1, 0)
-		center := p1.center_point_rotation90 (p2)
 	end
 
 	test_is_rotation180_of_true_case
@@ -164,7 +156,6 @@ feature -- Test routines
 					not p1.is_rotation180_of (p2))
 	end
 
-
 	test_is_rotation270_of_true_case
 	note
 		testing:  "covers/{POINT}.is_rotation270_of"
@@ -192,6 +183,48 @@ feature -- Test routines
 		assert ("Deux points images par rotation de 180 degrés",
 					not p2.is_rotation270_of (p1))
 	end
+
+	test_center_point_rotation90
+	note
+		testing:  "covers/{POINT}.center_point_rotation90"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (0, 1)
+		create p2.make (1, 0)
+		center := p1.center_point_rotation90 (p2)
+	end
+
+
+	test_center_point_rotation180
+	note
+		testing:  "covers/{POINT}.center_point_rotation180"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (2, 2)
+		create p2.make (-2, -2)
+		center := p1.center_point_rotation90 (p2)
+	end
+
+	test_center_point_rotation270
+	note
+		testing:  "covers/{POINT}.center_point_rotation270"
+	local
+		p1 : POINT
+		p2 : POINT
+		center : POINT
+	do
+		create p1.make (0, 3)
+		create p2.make (3, 0)
+		center := p1.center_point_rotation90 (p2)
+	end
+
+
 
 
 
