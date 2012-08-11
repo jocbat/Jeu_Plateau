@@ -190,11 +190,15 @@ feature -- Test routines
 	local
 		p1 : POINT
 		p2 : POINT
+		expected_center : POINT
 		center : POINT
 	do
 		create p1.make (0, 1)
 		create p2.make (1, 0)
+		create expected_center.make (0, 0)
 		center := p1.center_point_rotation90 (p2)
+		assert("La rotation de centre (0,0) et d'angle 90 degrés envoit (1,0) sur (0,1)",
+			center.is_equal (expected_center))
 	end
 
 
@@ -205,10 +209,19 @@ feature -- Test routines
 		p1 : POINT
 		p2 : POINT
 		center : POINT
+		expected_center : POINT
 	do
 		create p1.make (2, 2)
 		create p2.make (-2, -2)
-		center := p1.center_point_rotation90 (p2)
+		create expected_center.make (0, 0)
+		center := p1.center_point_rotation180(p2)
+		print(center.abscisse)
+		print(" ")
+		print(center.ordonnee)
+
+
+		assert("La rotation de centre (0,0) et d'angle 180 degrés envoit (-2, -2) sur (2, 2)",
+			center.is_equal (expected_center))
 	end
 
 	test_center_point_rotation270
@@ -222,6 +235,20 @@ feature -- Test routines
 		create p1.make (0, 3)
 		create p2.make (3, 0)
 		center := p1.center_point_rotation90 (p2)
+	end
+
+	test_vector_translation
+	note
+		testing:  "covers/{POINT}.vector_translation"
+	local
+		p1 : POINT
+		p2 : POINT
+		translation_vector : TUPLE[x : INTEGER; y : INTEGER]
+	do
+		create p1.make (12, 3)
+		create p2.make (2, 0)
+		translation_vector := p1.translation_vector (p2)
+
 	end
 
 	--vector_translation
