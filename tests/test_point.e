@@ -307,24 +307,24 @@ feature -- Test routines
 	end
 
 	--symetriser_deuxieme_diagonale
-	test_symetriser_premiere_diagonale
+	test_symetriser_deuxieme_diagonale
 	note
-		testing:  "covers/{POINT}.symetriser_premiere_diagonale"
+		testing:  "covers/{POINT}.symetriser_deuxieme_diagonale"
 	local
 		p1 : POINT
 		point_line : POINT
 		p1_image : POINT
 		expected_image : POINT
 	do
-		create p1.make (5, 2)
+		create p1.make (3, 2)
 		create point_line.make (2, 1)
-		create expected_image.make (3, 4)
-		p1.symetriser_premiere_diagonale (point_line)
-		assert("L'image de (5,2) par la symetrie axiale passant par (2,1) est (3, 4)",
+		create expected_image.make (1, 0)
+		p1.symetriser_deuxieme_diagonale (point_line)
+		assert("L'image de (3,2) par la symetrie axiale passant par (2,1) est (1, 0)",
 				p1.is_equal (expected_image))
 
 	end
-	
+
 end
 
 
