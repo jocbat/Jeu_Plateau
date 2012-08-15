@@ -390,6 +390,38 @@ feature -- Test routines
 
 	end
 
+	test_is_symmetrized_first_diagonal_of_true_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_first_diagonal_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (6, 4)
+		create other_point.make (3, 7)
+		create point_of_axe.make (2, 3)
+		assert("(6,4) est l'image par symetrie axiale parallèle à la première diagonale passant par (2,3) de (3,7)",
+				current_point.is_symmetrized_first_diagonal_of (point_of_axe, other_point))
+
+	end
+
+	test_is_symmetrized_first_diagonal_of_wrong_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_first_diagonal_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (6, 4)
+		create other_point.make (7, 8)
+		create point_of_axe.make (2, 3)
+		assert("(6,4) n'est pas l'image par symetrie axiale parallèle à la première diagonale passant par (2,3) de (7,8)",
+				not current_point.is_symmetrized_first_diagonal_of (point_of_axe, other_point))
+
+	end
+
 end
 
 
