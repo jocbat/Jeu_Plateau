@@ -61,6 +61,38 @@ feature
 		-- TODO !! involution of the routine
 	end
 
+
+	is_symmetrize_horizontally_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale horizontale
+	-- passant par point ?
+	deferred
+	end
+
+	symmetrize_vertically_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale verticale
+	-- passant par point ?
+	deferred
+	end
+
+	symmetrize_first_diagonal_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
+	-- à la première diagonale et passant par point ?
+	deferred
+	end
+
+	symmetrize_second_diagonal_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
+	-- à la seconde diagonale et passant par point ?
+	deferred
+	end
+
+
+	--symmetric_horizontally(point : POINT) : like Current
+	-- symétrique de Current par rapport à la droite horizontale
+	-- passant par point
+	--deferred
+	--end
+
 feature
 
 	is_isometric(other : like Current) : BOOLEAN

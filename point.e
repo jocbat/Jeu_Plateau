@@ -191,7 +191,6 @@ feature
 		abscisse := 2 * point.abscisse - abscisse
 	end
 
-
 	symmetrize_first_diagonal(point : POINT)
 	local
 		temp_abs : INTEGER
@@ -217,6 +216,30 @@ feature
 		temp_ord := point.ordonnee - (abscisse - point.abscisse)
 		abscisse := temp_abs
 		ordonnee := temp_ord
+	end
+
+	is_symmetrize_horizontally_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale horizontale
+	-- passant par point ?
+	do
+	end
+
+	symmetrize_vertically_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale verticale
+	-- passant par point ?
+	do
+	end
+
+	symmetrize_first_diagonal_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
+	-- à la première diagonale et passant par point ?
+	do
+	end
+
+	symmetrize_second_diagonal_of(point : POINT, other : like Current)
+	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
+	-- à la seconde diagonale et passant par point ?
+	do
 	end
 
 feature{NONE}
