@@ -222,6 +222,7 @@ feature
 	-- est ce que Current est image de 'other' par une symétrie axiale horizontale
 	-- passant par point ?
 	do
+		Result := (other.abscisse = abscisse) and ((ordonnee + other.ordonnee) / 2 = point.ordonnee)
 	end
 
 	is_symmetrized_vertically_of(point : POINT; other : like Current) : BOOLEAN
