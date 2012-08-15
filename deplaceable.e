@@ -8,6 +8,11 @@ deferred class
 	DEPLACEABLE
 
 feature
+
+	test(x : BOOLEAN)
+	do
+	end
+
 	translate(v_abs : INTEGER;v_ord : INTEGER)
 	-- effectue une translation de vecteur (v_abs, v_ord) du point courant
 	deferred
@@ -90,29 +95,45 @@ feature
 	symmetric_horizontally(point : POINT) : like Current
 	--symétrique de Current par rapport à la droite horizontale
 	--passant par point
+	local
+		clone_entity : like Current
 	do
-		Result := deep_twin.symmetrize_horizontally (point)
+		clone_entity := deep_twin
+		clone_entity.symmetrize_horizontally (point)
+		Result := clone_entity
 	end
 
 	symmetric_vertically(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite verticale
 	-- passant par point
+	local
+		clone_entity : like Current
 	do
-		Result := deep_twin.symmetrize_vertically (point)
+		clone_entity := deep_twin
+		clone_entity.symmetrize_vertically (point)
+		Result := clone_entity
 	end
 
 	symmetric_first_diagonal(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite parallèle à la premiere
 	-- diagonale et passant par point
+	local
+		clone_entity : like Current
 	do
-		Result := deep_twin.symmetrize_first_diagonal (point)
+		clone_entity := deep_twin
+		clone_entity.symmetrize_first_diagonal (point)
+		Result := clone_entity
 	end
 
 	symmetric_second_diagonal(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite parallèle à la seconde
 	-- diagonale et passant par point
+	local
+		clone_entity : like Current
 	do
-		Result := deep_twin.symmetrize_second_diagonal (point)
+		clone_entity := deep_twin
+		clone_entity.symmetrize_second_diagonal (point)
+		Result := clone_entity
 	end
 
 feature
