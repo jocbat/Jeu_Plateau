@@ -8,7 +8,11 @@ class
 	POINT
 inherit
 	DEPLACEABLE
-	redefine is_equal end
+	redefine is_equal,
+			 symmetric_horizontally,
+			 symmetric_vertically,
+			 symmetric_first_diagonal,
+			 symmetric_second_diagonal end
 create
 	make
 
