@@ -218,25 +218,25 @@ feature
 		ordonnee := temp_ord
 	end
 
-	is_symmetrize_horizontally_of(point : POINT; other : like Current) : BOOLEAN
+	is_symmetrized_horizontally_of(point : POINT; other : like Current) : BOOLEAN
 	-- est ce que Current est image de 'other' par une symétrie axiale horizontale
 	-- passant par point ?
 	do
 	end
 
-	is_symmetrize_vertically_of(point : POINT; other : like Current) : BOOLEAN
+	is_symmetrized_vertically_of(point : POINT; other : like Current) : BOOLEAN
 	-- est ce que Current est image de 'other' par une symétrie axiale verticale
 	-- passant par point ?
 	do
 	end
 
-	is_symmetrize_first_diagonal_of(point : POINT; other : like Current) : BOOLEAN
+	is_symmetrized_first_diagonal_of(point : POINT; other : like Current) : BOOLEAN
 	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
 	-- à la première diagonale et passant par point ?
 	do
 	end
 
-	is_symmetrize_second_diagonal_of(point : POINT; other : like Current) : BOOLEAN
+	is_symmetrized_second_diagonal_of(point : POINT; other : like Current) : BOOLEAN
 	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
 	-- à la seconde diagonale et passant par point ?
 	do
