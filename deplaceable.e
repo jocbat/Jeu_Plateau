@@ -87,11 +87,29 @@ feature
 	end
 
 
-	--symmetric_horizontally(point : POINT) : like Current
-	-- symétrique de Current par rapport à la droite horizontale
+	symmetric_horizontally(point : POINT) : like Current
+	--symétrique de Current par rapport à la droite horizontale
+	--passant par point
+	deferred
+	end
+
+	symmetric_vertically(point : POINT) : like Current
+	-- symétrique de Current par rapport à la droite verticale
 	-- passant par point
-	--deferred
-	--end
+	deferred
+	end
+
+	symmetric_first_diagonal(point : POINT) : like Current
+	-- symétrique de Current par rapport à la droite parallèle à la premiere
+	-- diagonale et passant par point
+	deferred
+	end
+
+	symmetric_second_diagonal(point : POINT) : like Current
+	-- symétrique de Current par rapport à la droite parallèle à la seconde
+	-- diagonale et passant par point
+	deferred
+	end
 
 feature
 
