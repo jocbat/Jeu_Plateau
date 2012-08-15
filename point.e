@@ -229,6 +229,7 @@ feature
 	-- est ce que Current est image de 'other' par une symétrie axiale verticale
 	-- passant par point ?
 	do
+		Result := (other.ordonnee = ordonnee) and ((abscisse + other.abscisse) / 2 = point.abscisse)
 	end
 
 	is_symmetrized_first_diagonal_of(point : POINT; other : like Current) : BOOLEAN

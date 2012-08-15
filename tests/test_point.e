@@ -325,6 +325,40 @@ feature -- Test routines
 
 	end
 
+	test_is_symmetrized_horizontally_of_true_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_horizontally_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (6, 1)
+		create other_point.make (6, 3)
+		create point_of_axe.make (3, 2)
+		assert("(6,1) est l'image par symetrie axiale horizontale passant par (3,2) de (6,3)",
+				current_point.is_symmetrized_horizontally_of (point_of_axe, other_point))
+
+	end
+
+	test_is_symmetrized_horizontally_of_wrong_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_horizontally_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (6, 1)
+		create other_point.make (7, 2)
+		create point_of_axe.make (3, 2)
+		assert("(6,1) n'est pas l'image par symetrie axiale horizontale passant par (3,2) de (7,2)",
+				not current_point.is_symmetrized_horizontally_of (point_of_axe, other_point))
+
+	end
+
+
+
 end
 
 
