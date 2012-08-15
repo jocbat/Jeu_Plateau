@@ -244,6 +244,8 @@ feature
 	-- est ce que Current est image de 'other' par une symétrie axiale d'axe parallèle
 	-- à la seconde diagonale et passant par point ?
 	do
+		Result := (abscisse - point.abscisse = - (other.ordonnee - point.ordonnee))
+					and (ordonnee - point.ordonnee = - (other.abscisse - point.abscisse))
 	end
 
 feature{NONE}
