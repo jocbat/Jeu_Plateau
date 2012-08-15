@@ -56,7 +56,7 @@ feature -- Test routines
 		point : POINT
 	do
 		create point.make (12, -5)
-		point.translater (10, -9)
+		point.translate (10, -9)
 	end
 
 	test_rotation_90
@@ -263,7 +263,7 @@ feature -- Test routines
 		create p1.make (12, 3)
 		create point_line.make (-1, 1)
 		create expected_image.make (12, -1)
-		p1.symetriser_horizontalement (point_line)
+		p1.symmetrize_horizontally (point_line)
 		assert("L'image de (12,3) par la symetrie axiale passant par (-1,1) est (12,-1)",
 				p1.is_equal (expected_image))
 
@@ -282,7 +282,7 @@ feature -- Test routines
 		create p1.make (12, 3)
 		create point_line.make (-1, 1)
 		create expected_image.make (-14, 3)
-		p1.symetriser_verticalement (point_line)
+		p1.symmetrize_vertically (point_line)
 		assert("L'image de (12,3) par la symetrie axiale passant par (-1,1) est (-14, 3)",
 				p1.is_equal (expected_image))
 
@@ -300,7 +300,7 @@ feature -- Test routines
 		create p1.make (5, 2)
 		create point_line.make (2, 1)
 		create expected_image.make (3, 4)
-		p1.symetriser_premiere_diagonale (point_line)
+		p1.symmetrize_first_diagonal (point_line)
 		assert("L'image de (5,2) par la symetrie axiale passant par (2,1) est (3, 4)",
 				p1.is_equal (expected_image))
 
@@ -319,7 +319,7 @@ feature -- Test routines
 		create p1.make (3, 2)
 		create point_line.make (2, 1)
 		create expected_image.make (1, 0)
-		p1.symetriser_deuxieme_diagonale (point_line)
+		p1.symmetrize_second_diagonal (point_line)
 		assert("L'image de (3,2) par la symetrie axiale passant par (2,1) est (1, 0)",
 				p1.is_equal (expected_image))
 

@@ -4,12 +4,11 @@ note
 	date: "$Date$"
 	revision: "$Revision$"
 
-deferred
-class
+deferred class
 	DEPLACEABLE
 
 feature
-	translater(v_abs : INTEGER;v_ord : INTEGER)
+	translate(v_abs : INTEGER;v_ord : INTEGER)
 	-- effectue une translation de vecteur (v_abs, v_ord) du point courant
 	deferred
 	end
@@ -33,28 +32,33 @@ feature
 		rotation_180(centre)
 	end
 
-	symetriser_horizontalement(point : POINT)
+	symmetrize_horizontally(point : POINT)
 	-- effectue la symétrie de Current par rapport à la droite horizontale
 	-- dont tous les points ont pour abscisse abscisse_droite
 	deferred
+	ensure
+		-- TODO !! involution of the routine
 	end
 
-	symetriser_verticalement(point : POINT)
+	symmetrize_vertically(point : POINT)
 	-- effectue la symétrie de Current par rapport à la droite verticale
 	-- dont tous les points ont pour ordonnee ordonnee_droite
 	deferred
+	ensure
+		-- TODO !! involution of the routine
 	end
 
-	symetriser_premiere_diagonale(point : POINT)
+	symmetrize_first_diagonal(point : POINT)
 	-- effectue la symétrie de Current par rapport à la droite parallèle
 	-- à la première diagonale et passant par 'point'
 	deferred
 	end
 
-	symetriser_deuxieme_diagonale(point : POINT)
+	symmetrize_second_diagonal(point : POINT)
 	-- effectue la symétrie de Current par rapport à la droite parallèle
 	-- à la deuxième diagonale et passant par 'point'
 	deferred
+		-- TODO !! involution of the routine
 	end
 
 feature
@@ -90,11 +94,14 @@ feature
 	deferred
 	end
 
-	vector_translation(other : like Current) : TUPLE[x : INTEGER; y : INTEGER]
+	translation_vector(other : like Current) : TUPLE[x : INTEGER; y : INTEGER]
 	-- vecteur permettant d'obtenir Current par translation de 'other'
 	require
 		existence : is_translation_of(other)
 	deferred
+	ensure
+		opposite_symetry : other.translation_vector (Current).x.is_equal (-Result.x) and
+							other.translation_vector (Current).y.is_equal (-Result.y)
 	end
 
 	center_point_rotation90(other : like Current) : POINT
