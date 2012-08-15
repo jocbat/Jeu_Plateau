@@ -422,6 +422,38 @@ feature -- Test routines
 
 	end
 
+	test_is_symmetrized_second_diagonal_of_true_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_second_diagonal_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (-3, 5)
+		create other_point.make (-6, 2)
+		create point_of_axe.make (-2, 1)
+		assert("(-3,5) est l'image par symetrie axiale parallèle à la deuxième diagonale passant par (-2,1) de (-6,2)",
+				current_point.is_symmetrized_second_diagonal_of (point_of_axe, other_point))
+
+	end
+
+	test_is_symmetrized_second_diagonal_of_wrong_case
+	note
+		testing:  "covers/{POINT}.is_symmetrized_second_diagonal_of"
+	local
+		current_point : POINT
+		other_point : POINT
+		point_of_axe : POINT
+	do
+		create current_point.make (-3, 5)
+		create other_point.make (1, 8)
+		create point_of_axe.make (-2, 1)
+		assert("(-3,5) est l'image par symetrie axiale parallèle à la deuxième diagonale passant par (-2,1) de (1,8)",
+				not current_point.is_symmetrized_second_diagonal_of (point_of_axe, other_point))
+
+	end
+
 end
 
 
