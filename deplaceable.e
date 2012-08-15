@@ -90,25 +90,29 @@ feature
 	symmetric_horizontally(point : POINT) : like Current
 	--symétrique de Current par rapport à la droite horizontale
 	--passant par point
-	deferred
+	do
+		Result := deep_twin.symmetrize_horizontally (point)
 	end
 
 	symmetric_vertically(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite verticale
 	-- passant par point
-	deferred
+	do
+		Result := deep_twin.symmetrize_vertically (point)
 	end
 
 	symmetric_first_diagonal(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite parallèle à la premiere
 	-- diagonale et passant par point
-	deferred
+	do
+		Result := deep_twin.symmetrize_first_diagonal (point)
 	end
 
 	symmetric_second_diagonal(point : POINT) : like Current
 	-- symétrique de Current par rapport à la droite parallèle à la seconde
 	-- diagonale et passant par point
-	deferred
+	do
+		Result := deep_twin.symmetrize_second_diagonal (point)
 	end
 
 feature
